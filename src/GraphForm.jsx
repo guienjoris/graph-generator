@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GraphFormData from './GraphFormData';
+import Graph from './Graph';
 
 function GraphForm(){
     const [infos, setInfos]= useState({choiceGraphModel:"PieChart"});
@@ -10,9 +11,8 @@ function GraphForm(){
     }
     const handleAddData = data=>{
         const updatedDatas = [...datas];
-        updatedDatas.push(data);
+        updatedDatas.push(data );
         setDatas(updatedDatas);
-        console.log(datas)
     }
     return(
         <div>
@@ -31,13 +31,8 @@ function GraphForm(){
             <GraphFormData onDataAdd={handleAddData}  />
             <p>{infos.titleGraphic}</p>
             <p>{infos.choiceGraphModel}</p>
-            <ul>{datas.map((data) =>{
-                return(<div>
-                <li>{data.name}</li>
-                <li>{data.value}</li>
-                </div>
-            )})}
-                </ul>
+            <Graph data={datas} info={infos} />
+
         </div>
     );
 }
