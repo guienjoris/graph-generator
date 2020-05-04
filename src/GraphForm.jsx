@@ -28,9 +28,7 @@ function GraphForm(){
                     </select>
                 </div>
             </form>
-            <GraphFormData onDataAdd={handleAddData}  />
-            <p>{infos.titleGraphic}</p>
-            <p>{infos.choiceGraphModel}</p>
+            <GraphFormData onDataAdd={handleAddData} info={infos}  />
             <Graph data={datas} info={infos} />
 
         </div>
