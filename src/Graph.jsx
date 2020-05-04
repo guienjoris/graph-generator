@@ -1,39 +1,28 @@
 import React from 'react';
-import Plotly from 'plotly.js-dist';
+import PieChart from './PieChart';
+import LineChart from './LineChart';
+import BarChart from './BarChart';
 
 const Graph= ({data,info}) =>{
     if(info.choiceGraphModel === "PieChart"){
-        console.log(data);
-        // let values =[];
-        // let labels = [];
-        // data.map(element =>{
-        //     values.push(element.values);
-        //     labels.push(element.name);
-        // })
-        // let dataGraph = [{
-        //     values: values,
-        //     labels: labels,
-        //     type:'pie'
-        // }]
-        // console.log(dataGraph)
+        
         return(
             <div>
-                <h1>{info.titleGraphic}</h1>
-                <p>{info.choiceGraphModel}</p>
+                <PieChart data={data} info={info}/>
             </div>
         )
     }
     if(info.choiceGraphModel === "BarChart"){
         return(
             <div>
-                <p>Bar Chart Graph</p>
+                <BarChart data={data} info={info}/>
             </div>
         )
     }
     if(info.choiceGraphModel === "LineChart"){
         return(
             <div>
-                <p>Line Chart Graph</p>
+                <LineChart data={data} info={info}/>
             </div>
         )
     }

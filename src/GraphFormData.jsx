@@ -9,41 +9,27 @@ const GraphFormData = ({onDataAdd,info})=>{
     }
 
     let [counter,setCounter] = useState(0);
-
-    if(info.choiceGraphModel === "PieChart"){
-    const handleSubmitData = e =>{
-        e.preventDefault();
-        const name = newData.name;
-        const value = newData.value;
-        setCounter(counter +1)
-        onDataAdd({name,value,counter});
-        setNewData({name:'',value:0})
-    }
-    return(
-        <div>
-            <form onSubmit={handleSubmitData}>
-                <p>Datas:</p>
-                <input type="text" placeholder="Nom de la data" name="name" onChange={handleChangeData} value={newData.name}  />
-                <input type="number" placeholder="Valeur de la data" name="value" onChange={handleChangeData} value={newData.value} />
-                <button>Add data</button>
-            </form>
-        </div>
-    )
-    }
-    if(info.choiceGraphModel === "BarChart"){
+        const handleSubmitData = e =>{
+            e.preventDefault();
+            const name = newData.name;
+            const value = newData.value;
+            setCounter(counter +1)
+            onDataAdd({name,value,counter});
+            setNewData({name:'',value:0})
+        }
         return(
             <div>
-                <p>Bar Chart</p>
+                <form onSubmit={handleSubmitData}>
+                    <p>Datas:</p>
+                    <input type="text" placeholder="Nom de la data" name="name" onChange={handleChangeData} value={newData.name}  />
+                    <input type="number" placeholder="Valeur de la data" name="value" onChange={handleChangeData} value={newData.value} />
+                    <button disabled={!newData.name}>Add data</button>
+                </form>
             </div>
         )
-    }
-    if(info.choiceGraphModel === "LineChart"){
-        return(
-            <div>
-                <p>Line Chart</p>
-            </div>
-        )
-    }
+    
+    
+    
 }
 
 export default GraphFormData;
